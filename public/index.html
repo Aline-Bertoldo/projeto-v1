@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login e Cadastro</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        div.container {
+            max-width: 500px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            background-color: #007BFF;
+            padding: 10px 0;
+            color: #fff;
+        }
+
+        header nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        header nav h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .login-input {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-right: 5px;
+            padding: 5px 10px;
+        }
+
+        button, input[type="submit"] {
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover, input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .course-advertisement {
+            background-color: #f9f9f9;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .course-advertisement h2 {
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        .course-advertisement ul {
+            list-style-type: disc;
+            margin-top: 20px;
+            padding-left: 30px;
+            text-align: left;
+        }
+
+        .image-scrollbar {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .image-scrollbar img {
+            max-height: 150px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .image-scrollbar img:hover {
+            transform: scale(1.1);
+        }
+
+        footer {
+            background-color: #007BFF;
+            color: #000; 
+            padding: 20px 0;
+        }
+
+        footer p {
+            margin: 5px 0;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h1>Full Stack JavaScript</h1>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Username" class="login-input">
+                <input type="password" id="password" placeholder="Password" class="login-input">
+                <button type="submit">Entrar</button>
+            </form>
+        </nav>
+    </header>
+
+    <section class="course-advertisement">
+        <div class="container">
+            <h2>Curso Full Stack JavaScript</h2>
+            <p>Domine o desenvolvimento web moderno com o nosso curso completo de JavaScript Full Stack! Do front-end ao back-end, você aprenderá tudo o que é necessário para se tornar um desenvolvedor de elite.</p>
+            <ul>
+                <li>Entendimento profundo de JavaScript ES6+.</li>
+                <li>Frameworks populares como React, Angular e Vue.</li>
+                <li>Node.js, Express e MongoDB no back-end.</li>
+                <li>Projetos práticos e implementações do mundo real.</li>
+            </ul>
+            <div class="image-scrollbar">
+                <img src="img/css-logo.png" alt="Curso imagem 1">
+                <img src="img/js-logo.png" alt="Curso imagem 2">
+                <img src="img/html-logo.png" alt="Curso imagem 3">
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <h1>Inscreva-se:</h1>
+        <form action="http://localhost:3000/dados" method="POST">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" required>
+            <label for="celular">Celular:</label>
+            <input type="text" id="celular" name="celular" required>
+            <input type="checkbox" id="lgpd" name="lgpd" required>
+            <label for="lgpd">Aceito os termos de uso e política de privacidade</label>
+            <input type="submit" value="ENVIAR">
+        </form>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 JS Academy. Todos os direitos reservados.</p>
+            <p>CNPJ: 12.345.678/0001-90</p>
+            <p>Contato: (11) 98765-4321 | contato@jsacademy.com.br</p>
+        </div>
+    </footer>
+
+    <script src="api.js"></script>
+</body>
+
+</html>
+

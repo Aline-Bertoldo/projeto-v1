@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Administração de Leads</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.8/xlsx.full.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+        }
+
+        td {
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+
+        .modal-content {
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            max-width: 150px;
+            text-decoration: none;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+			color: #fff;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<h1>Administração de Leads</h1>
+
+<button id="downloadExcel">Baixar Excel</button>
+
+<table id="leadsTable" border="1">
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Os registros serão inseridos aqui via JavaScript -->
+    </tbody>
+</table>
+
+<div class="modal" tabindex="-1" role="dialog" id="editModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Lead</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <div class="form-group">
+                        <label for="editName">Nome</label>
+                        <input type="text" class="form-control" id="editName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editEmail">Email</label>
+                        <input type="email" class="form-control" id="editEmail" required>
+                    </div>
+                    <input type="hidden" id="editId">
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('downloadExcel').addEventListener('click', function() {
+        const wb = XLSX.utils.book_new();
+        const ws = XLSX.utils.table_to_sheet(document.getElementById('leadsTable'));
+        XLSX.utils.book_append_sheet(wb, ws, "Leads");
+        XLSX.writeFile(wb, "leads.xlsx");
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.2.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="./admin.js"></script>
+
+<br>
+<a href="/logout">Logout</a>
+
+</body>
+</html>
